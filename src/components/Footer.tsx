@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Logo & description */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2">
+            <a href="/" className="flex items-center gap-2">
               <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
                 <span className="text-dark text-xs font-bold font-[family-name:var(--font-heading)]">
                   SF
@@ -19,7 +19,7 @@ export default function Footer() {
               <span className="text-lg font-semibold tracking-tight font-[family-name:var(--font-heading)]">
                 Scale<span className="text-gold">Flow</span>
               </span>
-            </div>
+            </a>
             <p className="mt-4 text-sm text-gray-text leading-relaxed max-w-xs">
               Content. Ads. Automation. One growth system that drives revenue.
             </p>
@@ -31,16 +31,19 @@ export default function Footer() {
               Quick Links
             </h4>
             <div className="flex flex-col gap-3 text-sm text-gray-text">
-              <a href="#pillars" className="hover:text-white transition-colors">
+              <a href="/about" className="hover:text-white transition-colors">
+                About
+              </a>
+              <a href="/#pillars" className="hover:text-white transition-colors">
                 Services
               </a>
-              <a href="#case-studies" className="hover:text-white transition-colors">
+              <a href="/#case-studies" className="hover:text-white transition-colors">
                 Results
               </a>
-              <a href="#process" className="hover:text-white transition-colors">
+              <a href="/#process" className="hover:text-white transition-colors">
                 Process
               </a>
-              <a href="#cta" className="hover:text-white transition-colors">
+              <a href="/#cta" className="hover:text-white transition-colors">
                 Contact
               </a>
             </div>

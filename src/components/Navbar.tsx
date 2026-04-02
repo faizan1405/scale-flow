@@ -7,12 +7,12 @@ const WHATSAPP_LINK =
   "https://wa.me/919873721207?text=Hi%20Scale%20Flow!%20I'm%20interested%20in%20your%20services.%20Can%20we%20chat%3F";
 
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#pillars" },
-  { label: "Results", href: "#case-studies" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#cta" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/#pillars" },
+  { label: "Results", href: "/#case-studies" },
+  { label: "Process", href: "/#process" },
+  { label: "Contact", href: "/#cta" },
 ];
 
 export default function Navbar() {
@@ -33,7 +33,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
               <span className="text-dark text-sm font-bold font-[family-name:var(--font-heading)]">
                 SF
@@ -59,7 +59,7 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <a
-            href="#cta"
+            href="/#cta"
             className="hidden md:inline-flex h-10 items-center px-6 rounded-full bg-gold text-dark text-sm font-semibold hover:bg-gold-light transition-colors duration-300"
           >
             Contact Now
@@ -112,7 +112,7 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#cta"
+                href="/#cta"
                 onClick={() => setMobileOpen(false)}
                 className="mt-2 inline-flex h-12 items-center justify-center rounded-full bg-gold text-dark text-sm font-semibold hover:bg-gold-light transition-colors"
               >
