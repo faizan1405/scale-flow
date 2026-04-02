@@ -18,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -25,6 +26,8 @@ body {
   color: #F5F5F5;
   font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
@@ -47,4 +50,48 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-gold);
+}
+
+/* Animated path flow for the Process map */
+@keyframes pathFlow {
+  to {
+    stroke-dashoffset: -30;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(201, 169, 110, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(201, 169, 110, 0.6); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(201, 169, 110, 0.1); }
+  50% { border-color: rgba(201, 169, 110, 0.3); }
+}
+
+.animate-path-flow {
+  animation: pathFlow 1.5s linear infinite;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-border-glow {
+  animation: borderGlow 3s ease-in-out infinite;
 }

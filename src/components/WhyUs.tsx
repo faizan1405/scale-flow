@@ -14,9 +14,9 @@ const reasons = [
     ),
   },
   {
-    title: "Systems Thinking",
+    title: "Everything Connected",
     description:
-      "We don't optimize in isolation. Every element is designed to feed into the next — content drives ads, ads drive leads, automation converts them.",
+      "Your content feeds your ads. Your ads bring in leads. Your automation converts them. Every piece is designed to amplify the next — nothing works in isolation.",
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
@@ -24,7 +24,7 @@ const reasons = [
     ),
   },
   {
-    title: "Faster Execution",
+    title: "Fast & Focused",
     description:
       "No bloated teams. No month-long onboarding. We move fast with a lean, senior team that ships results in weeks — not quarters.",
     icon: (
@@ -34,7 +34,7 @@ const reasons = [
     ),
   },
   {
-    title: "Less Work for You",
+    title: "You Focus on Business",
     description:
       "We handle the build. You focus on your business. Our systems run on autopilot so you're not buried in day-to-day marketing decisions.",
     icon: (
@@ -47,9 +47,9 @@ const reasons = [
 
 export default function WhyUs() {
   return (
-    <section className="relative py-28 md:py-36">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-20 items-start">
+    <section className="relative py-28 md:py-36 overflow-hidden">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-start">
           {/* Left side */}
           <div className="lg:sticky lg:top-32">
             <motion.span
@@ -93,10 +93,10 @@ export default function WhyUs() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group p-7 rounded-2xl border border-dark-border bg-dark-card hover:border-gold/15 transition-all duration-500"
+                className="group p-6 sm:p-7 rounded-2xl border border-dark-border bg-dark-card hover:border-gold/15 hover:shadow-[0_0_30px_rgba(201,169,110,0.05)] transition-all duration-500"
               >
-                <div className="flex items-start gap-5">
-                  <div className="h-10 w-10 rounded-lg bg-gold/[0.08] border border-gold/10 flex items-center justify-center text-gold flex-shrink-0">
+                <div className="flex items-start gap-4 sm:gap-5">
+                  <div className="h-10 w-10 rounded-lg bg-gold/[0.08] border border-gold/10 flex items-center justify-center text-gold flex-shrink-0 group-hover:bg-gold/[0.15] group-hover:border-gold/20 transition-all duration-500">
                     {reason.icon}
                   </div>
                   <div>
