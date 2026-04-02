@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export default function Intro() {
   return (
-    <section className="relative py-28 md:py-36">
-      <div className="mx-auto max-w-4xl px-6 text-center">
+    <section className="relative py-28 md:py-36 overflow-hidden">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
         <motion.span
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,9 +35,9 @@ export default function Intro() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="mt-8 text-lg md:text-xl text-gray-text leading-relaxed max-w-2xl mx-auto"
         >
-          One agency for content. Another for ads. A freelancer for automation.
-          Nothing connects. Nothing compounds. You end up spending more and
-          growing less.
+          One person for content. Another for ads. Some random tool for
+          automation. Nothing connects. Nothing compounds. You end up spending
+          more and growing less.
         </motion.p>
 
         <motion.div
@@ -45,13 +45,13 @@ export default function Intro() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, delay: 0.35 }}
-          className="mt-12 p-8 md:p-12 rounded-2xl border border-gold/10 bg-gold/[0.03]"
+          className="mt-12 p-8 md:p-12 rounded-2xl border border-gold/10 bg-gold/[0.03] animate-border-glow"
         >
           <p className="text-lg md:text-xl text-white leading-relaxed font-medium">
             Scale Flow builds the{" "}
-            <span className="text-gold">complete growth system</span> — content,
-            ads, and automation working together as one engine. So every piece
-            amplifies the next.
+            <span className="text-gold">complete growth system</span> — social
+            media content, Meta Ads, and AI automation working together as one
+            engine. So every piece amplifies the next.
           </p>
         </motion.div>
       </div>
