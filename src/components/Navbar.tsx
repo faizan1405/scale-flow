@@ -8,6 +8,7 @@ const WHATSAPP_LINK =
 
 const navLinks = [
   { label: "Home", href: "#" },
+  { label: "About", href: "#about" },
   { label: "Services", href: "#pillars" },
   { label: "Results", href: "#case-studies" },
   { label: "Process", href: "#process" },
