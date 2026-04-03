@@ -92,70 +92,81 @@ export default function Clients() {
 
         {/* Cards Grid */}
         <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-6">
-          {clients.map((client, i) => (
-            <motion.div
-              key={client.initials}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`group relative rounded-2xl border border-white/[0.06] p-8 backdrop-blur-xl transition-all duration-500 hover:border-gold/20 hover:-translate-y-1 hover:shadow-[0_8px_40px_-12px_rgba(201,169,110,0.15)] ${
-                i < 3 ? "lg:col-span-2" : "lg:col-span-3"
-              }`}
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(17,17,17,0.9) 0%, rgba(11,11,11,0.95) 100%)",
-              }}
-            >
-              {/* Glow on hover */}
-              <div className="absolute inset-0 rounded-2xl bg-gold/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          {clients.map((client, i) => {
+            const CardWrapper = client.link ? "a" : "div";
+            const linkProps = client.link
+              ? {
+                  href: client.link,
+                  target: "_blank" as const,
+                  rel: "noopener noreferrer",
+                }
+              : {};
 
-              {/* Icon Box */}
-              <div
-                className={`relative h-14 w-14 rounded-xl bg-gradient-to-br ${client.gradient} flex items-center justify-center border border-white/[0.08] transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg`}
+            return (
+              <motion.div
+                key={client.initials}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className={`${i < 3 ? "lg:col-span-2" : "lg:col-span-3"}`}
               >
-                <span className="text-lg font-bold text-white font-[family-name:var(--font-heading)]">
-                  {client.initials}
-                </span>
-              </div>
-
-              {/* Content */}
-              <h3 className="relative mt-6 text-xl font-semibold tracking-tight text-white font-[family-name:var(--font-heading)]">
-                {client.name}
-              </h3>
-              <span className="relative mt-2 inline-block text-xs tracking-widest uppercase text-gold/80 font-medium">
-                {client.category}
-              </span>
-              <p className="relative mt-4 text-gray-text leading-relaxed text-[15px]">
-                {client.description}
-              </p>
-
-              {/* Link */}
-              {client.link && (
-                <a
-                  href={client.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative mt-6 inline-flex items-center gap-2 text-sm font-medium text-gold/70 transition-colors duration-300 hover:text-gold"
+                <CardWrapper
+                  {...linkProps}
+                  className={`group relative block rounded-2xl border border-white/[0.06] p-8 backdrop-blur-xl transition-all duration-500 hover:border-gold/20 hover:-translate-y-1 hover:shadow-[0_8px_40px_-12px_rgba(201,169,110,0.15)] h-full ${
+                    client.link ? "cursor-pointer" : ""
+                  }`}
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(17,17,17,0.9) 0%, rgba(11,11,11,0.95) 100%)",
+                  }}
                 >
-                  Visit Site
-                  <svg
-                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
+                  {/* Glow on hover */}
+                  <div className="absolute inset-0 rounded-2xl bg-gold/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  {/* Icon Box */}
+                  <div
+                    className={`relative h-14 w-14 rounded-xl bg-gradient-to-br ${client.gradient} flex items-center justify-center border border-white/[0.08] transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg`}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                    />
-                  </svg>
-                </a>
-              )}
-            </motion.div>
-          ))}
+                    <span className="text-lg font-bold text-white font-[family-name:var(--font-heading)]">
+                      {client.initials}
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="relative mt-6 text-xl font-semibold tracking-tight text-white font-[family-name:var(--font-heading)]">
+                    {client.name}
+                  </h3>
+                  <span className="relative mt-2 inline-block text-xs tracking-widest uppercase text-gold/80 font-medium">
+                    {client.category}
+                  </span>
+                  <p className="relative mt-4 text-gray-text leading-relaxed text-[15px]">
+                    {client.description}
+                  </p>
+
+                  {/* Link indicator */}
+                  {client.link && (
+                    <span className="relative mt-6 inline-flex items-center gap-2 text-sm font-medium text-gold/70 transition-colors duration-300 group-hover:text-gold">
+                      Visit Site
+                      <svg
+                        className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                        />
+                      </svg>
+                    </span>
+                  )}
+                </CardWrapper>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
