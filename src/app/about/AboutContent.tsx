@@ -46,16 +46,16 @@ const brands = [
     link: "https://auraflame1.com/",
   },
   {
-    name: "Seamless Socials",
-    role: "Social Media Management",
+    name: "Scale Flow Website",
+    role: "Official Website",
     description:
-      "End-to-end social media management — strategy, content, engagement, and growth handled on autopilot.",
+      "Visit our official website to explore services, case studies, and growth systems built for modern brands.",
     accent: "from-cyan-400 to-blue-500",
     glowColor: "rgba(34, 211, 238, 0.15)",
     borderHover: "hover:border-cyan-400/25",
     textColor: "text-cyan-400",
-    initials: "SS",
-    link: "https://seamlesssocials.in/",
+    initials: "SW",
+    link: "https://scale-flow-sooty.vercel.app/",
   },
 ];
 
@@ -435,7 +435,7 @@ export default function AboutContent() {
             className="mt-8 text-lg md:text-xl text-gray-text max-w-2xl mx-auto leading-relaxed"
           >
             Founder of{" "}
-            <span className="text-gold font-medium">Scale Flow</span>,{" "}
+            <span className="text-gold font-medium">Scale Flow</span> and{" "}
             <a
               href="https://auraflame1.com/"
               target="_blank"
@@ -443,15 +443,6 @@ export default function AboutContent() {
               className="text-orange-400 font-medium hover:text-orange-300 transition-colors duration-300 border-b border-orange-400/30 hover:border-orange-300/60"
             >
               Aura Flame
-            </a>
-            , and{" "}
-            <a
-              href="https://seamlesssocials.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-cyan-400 font-medium hover:text-cyan-300 transition-colors duration-300 border-b border-cyan-400/30 hover:border-cyan-300/60"
-            >
-              Seamless Socials
             </a>
             .
             <br className="hidden sm:block" />
@@ -725,17 +716,9 @@ export default function AboutContent() {
                   >
                     Aura Flame
                   </a>{" "}
-                  to craft premium brand identities and creative direction. And{" "}
-                  <a
-                    href="https://seamlesssocials.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-400 font-medium hover:text-cyan-300 transition-colors duration-300 border-b border-cyan-400/30 hover:border-cyan-300/60"
-                  >
-                    Seamless Socials
-                  </a>{" "}
-                  to handle end-to-end social media management for brands that
-                  want results without the hassle.
+                  to craft premium brand identities and creative direction.
+                  Alongside it, Scale Flow handles end-to-end social media
+                  management for brands that want results without the hassle.
                 </p>
                 <p className="text-gray-text text-[16px] leading-[1.8]">
                   Today, I work with founders and brands who are tired of
@@ -758,10 +741,10 @@ export default function AboutContent() {
                 </div>
                 <div>
                   <p className="text-white font-semibold font-[family-name:var(--font-heading)] tracking-tight">
-                    Faizan
+                    Faizan Khan
                   </p>
                   <p className="text-xs text-gray-text">
-                    Founder & Growth Strategist
+                    Founder, Scale Flow
                   </p>
                 </div>
               </motion.div>
@@ -1279,3 +1262,4 @@ export default function AboutContent() {
     </div>
   );
 }
+

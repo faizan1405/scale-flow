@@ -22,12 +22,12 @@ const clients = [
     gradient: "from-orange-500/30 to-red-500/30",
   },
   {
-    initials: "SS",
-    name: "Seamless Socials",
-    category: "Social Media Management",
+    initials: "SW",
+    name: "Scale Flow Website",
+    category: "Official Website",
     description:
-      "End-to-end social media management — strategy, content, engagement, and growth handled on autopilot.",
-    link: "https://seamlesssocials.in/",
+      "Visit our official website to explore services, case studies, and growth systems built for modern brands.",
+    link: "https://scale-flow-sooty.vercel.app/",
     gradient: "from-cyan-500/30 to-blue-500/30",
   },
   {
@@ -172,3 +172,4 @@ export default function Clients() {
     </section>
   );
 }
+
