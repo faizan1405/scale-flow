@@ -59,10 +59,10 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <a
-            href="/#cta"
+            href="tel:+919873721207"
             className="hidden md:inline-flex h-10 items-center px-6 rounded-full bg-gold text-dark text-sm font-semibold hover:bg-gold-light transition-colors duration-300"
           >
-            Contact Now
+            Call Now
           </a>
 
           {/* Mobile Toggle */}
@@ -112,11 +112,11 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="/#cta"
+                href="tel:+919873721207"
                 onClick={() => setMobileOpen(false)}
                 className="mt-2 inline-flex h-12 items-center justify-center rounded-full bg-gold text-dark text-sm font-semibold hover:bg-gold-light transition-colors"
               >
-                Contact Now
+                Call Now
               </a>
               <a
                 href={WHATSAPP_LINK}
