@@ -2,9 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const WHATSAPP_LINK =
-  "https://wa.me/919873721207?text=Hi%20Scale%20Flow!%20I'm%20interested%20in%20your%20services.%20Can%20we%20chat%3F";
+import { WHATSAPP_LINK, WHATSAPP_NUMBER } from "@/lib/constants";
 
 const services = [
   { value: "", label: "Select a service" },
@@ -16,6 +14,7 @@ const services = [
 
 export default function CTA() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -24,8 +23,9 @@ export default function CTA() {
     message: "",
   });
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    setError(null);
 
     const serviceLabel =
       services.find((s) => s.value === form.service)?.label || form.service;
@@ -42,12 +42,35 @@ export default function CTA() {
       .filter(Boolean)
       .join("\n");
 
-    window.open(
-      `https://wa.me/919873721207?text=${encodeURIComponent(text)}`,
-      "_blank"
-    );
+    const encoded = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
 
-    setSubmitted(true);
+    try {
+      const newWindow = window.open(whatsappUrl, "_blank");
+
+      if (!newWindow) {
+        setError(
+          "Your browser blocked the popup. Please allow popups for this site, or click the WhatsApp button below."
+        );
+        return;
+      }
+
+      // Verify the window wasn't closed immediately
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      if (newWindow.closed) {
+        setError(
+          "The WhatsApp window was blocked. Please allow popups and try again, or use the button below."
+        );
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError(
+        "Something went wrong opening WhatsApp. Please try again or reach us at faizanthings@gmail.com."
+      );
+    }
   }
 
   return (
@@ -188,22 +211,43 @@ export default function CTA() {
                       </svg>
                     </div>
                     <h3 className="text-xl font-semibold font-[family-name:var(--font-heading)]">
-                      Message sent!
+                      WhatsApp opened!
                     </h3>
                     <p className="mt-3 text-gray-text text-sm">
-                      We&apos;ll get back to you shortly. You can also reach us directly at{" "}
-                      <a href="mailto:faizanthings@gmail.com" className="text-gold hover:underline">
-                        faizanthings@gmail.com
-                      </a>
+                      Complete the conversation on WhatsApp to reach Scale Flow directly.
                     </p>
                     <button
                       onClick={() => {
                         setSubmitted(false);
+                        setError(null);
                         setForm({ name: "", email: "", phone: "", service: "", message: "" });
                       }}
                       className="mt-6 text-sm text-gold hover:underline"
                     >
                       Send another message
+                    </button>
+                  </motion.div>
+                ) : error ? (
+                  <motion.div
+                    key="error"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-10"
+                  >
+                    <div className="mx-auto h-16 w-16 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-6">
+                      <svg className="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-semibold font-[family-name:var(--font-heading)]">
+                      Couldn&apos;t open WhatsApp
+                    </h3>
+                    <p className="mt-3 text-gray-text text-sm">{error}</p>
+                    <button
+                      onClick={() => setError(null)}
+                      className="mt-6 text-sm text-gold hover:underline"
+                    >
+                      Try again
                     </button>
                   </motion.div>
                 ) : (

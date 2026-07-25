@@ -10,8 +10,7 @@ import {
   useMotionTemplate,
 } from "framer-motion";
 
-const WHATSAPP_LINK =
-  "https://wa.me/919873721207?text=Hi%20Scale%20Flow!%20I'm%20interested%20in%20your%20services.%20Can%20we%20chat%3F";
+import { WHATSAPP_LINK } from "@/lib/constants";
 
 const stats = [
   { value: "50+", label: "Brands Scaled", suffix: "" },
@@ -570,45 +569,25 @@ export default function AboutContent() {
                     </div>
 
                     {/*
-                      Replace this placeholder with your image:
+                      Photo placeholder — replace with:
                       import Image from "next/image";
-                      <Image src="/your-photo.jpg" alt="Faizan" fill className="object-cover" />
+                      <Image src="/faizan.jpg" alt="Faizan" fill className="object-cover" />
                     */}
-                    <div className="relative z-10 absolute inset-0 flex flex-col items-center justify-center gap-6">
-                      {/* Animated ring around avatar */}
+                    <div className="relative z-10 absolute inset-0 flex flex-col items-center justify-center gap-5">
                       <div className="relative">
-                        <motion.div
-                          className="absolute -inset-3 rounded-full border border-gold/15"
-                          animate={{ rotate: 360 }}
-                          transition={{
-                            duration: 20,
-                            repeat: Infinity,
-                            ease: "linear",
-                          }}
-                          style={{
-                            borderStyle: "dashed",
-                            borderSpacing: "10px",
-                          }}
-                        />
-                        <div className="h-28 w-28 rounded-full bg-gradient-to-br from-gold/[0.08] to-gold/[0.02] border border-gold/15 flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
-                          <svg
-                            className="w-14 h-14 text-gold/25"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={0.7}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                            />
-                          </svg>
+                        <div className="absolute inset-0 rounded-full bg-gold/10 blur-2xl" aria-hidden="true" />
+                        <div className="relative h-32 w-32 rounded-full bg-gradient-to-br from-gold/20 to-gold/[0.04] border border-gold/25 flex items-center justify-center shadow-[0_0_60px_rgba(201,169,110,0.15)]">
+                          <span className="text-4xl font-bold text-gold font-[family-name:var(--font-heading)]">
+                            SF
+                          </span>
                         </div>
                       </div>
-                      <div className="text-center">
-                        <span className="text-sm text-gray-text/25 tracking-widest uppercase">
-                          Your photo here
+                      <div className="flex flex-col items-center gap-1">
+                        <span className="text-sm text-gray-light tracking-[0.25em] uppercase font-medium">
+                          Faizan
+                        </span>
+                        <span className="text-xs text-gray-text/60 tracking-widest uppercase">
+                          Founder · Scale Flow
                         </span>
                       </div>
                     </div>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#A88B4A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="400" height="500" fill="url(#bg)"/>
+  <!-- Subtle radial glow -->
+  <circle cx="200" cy="180" r="150" fill="url(#glow)"/>
+  <!-- Decorative circles -->
+  <circle cx="200" cy="180" r="80" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.12"/>
+  <circle cx="200" cy="180" r="60" fill="none" stroke="#C9A96E" stroke-width="0.5" opacity="0.1"/>
+  <!-- Avatar circle -->
+  <circle cx="200" cy="180" r="55" fill="none" stroke="url(#gold-grad)" stroke-width="2" opacity="0.3"/>
+  <circle cx="200" cy="180" r="50" fill="url(#gold-grad)" opacity="0.08"/>
+  <!-- Person silhouette icon -->
+  <circle cx="200" cy="162" r="18" fill="#C9A96E" opacity="0.25"/>
+  <ellipse cx="200" cy="220" rx="28" ry="22" fill="#C9A96E" opacity="0.2"/>
+  <!-- Initials -->
+  <text x="200" y="192" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#C9A96E" opacity="0.6">SF</text>
+  <!-- Label -->
+  <text x="200" y="260" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#888888" letter-spacing="4">FAIZAN</text>
+  <line x1="140" y1="275" x2="260" y2="275" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+  <!-- Corner accent marks -->
+  <path d="M 30 30 L 50 30 M 30 30 L 30 50" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.15"/>
+  <path d="M 370 30 L 350 30 M 370 30 L 370 50" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.15"/>
+  <path d="M 30 470 L 50 470 M 30 470 L 30 450" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.15"/>
+  <path d="M 370 470 L 350 470 M 370 470 L 370 450" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.15"/>
+</svg>

@@ -1,7 +1,7 @@
 "use client";
 
-const WHATSAPP_LINK =
-  "https://wa.me/919873721207?text=Hi%20Scale%20Flow!%20I'm%20interested%20in%20your%20services.%20Can%20we%20chat%3F";
+import Link from "next/link";
+import { WHATSAPP_LINK } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Logo & description */}
           <div className="lg:col-span-1">
-            <a href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2">
               <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
                 <span className="text-dark text-xs font-bold font-[family-name:var(--font-heading)]">
                   SF
@@ -19,7 +19,7 @@ export default function Footer() {
               <span className="text-lg font-semibold tracking-tight font-[family-name:var(--font-heading)]">
                 Scale<span className="text-gold">Flow</span>
               </span>
-            </a>
+            </Link>
             <p className="mt-4 text-sm text-gray-text leading-relaxed max-w-xs">
               Content. Ads. Automation. One growth system that drives revenue.
             </p>
@@ -31,21 +31,21 @@ export default function Footer() {
               Quick Links
             </h4>
             <div className="flex flex-col gap-3 text-sm text-gray-text">
-              <a href="/about" className="hover:text-white transition-colors">
+              <Link href="/about" className="hover:text-white transition-colors">
                 About
-              </a>
-              <a href="/#pillars" className="hover:text-white transition-colors">
+              </Link>
+              <Link href="/#pillars" className="hover:text-white transition-colors">
                 Services
-              </a>
-              <a href="/#case-studies" className="hover:text-white transition-colors">
+              </Link>
+              <Link href="/#case-studies" className="hover:text-white transition-colors">
                 Results
-              </a>
-              <a href="/#process" className="hover:text-white transition-colors">
+              </Link>
+              <Link href="/#process" className="hover:text-white transition-colors">
                 Process
-              </a>
-              <a href="/#cta" className="hover:text-white transition-colors">
+              </Link>
+              <Link href="/#cta" className="hover:text-white transition-colors">
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
 

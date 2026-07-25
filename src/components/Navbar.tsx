@@ -1,17 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-
-const WHATSAPP_LINK =
-  "https://wa.me/919873721207?text=Hi%20Scale%20Flow!%20I'm%20interested%20in%20your%20services.%20Can%20we%20chat%3F";
+import { WHATSAPP_LINK } from "@/lib/constants";
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/#pillars" },
   { label: "Results", href: "/#case-studies" },
-  { label: "Process", href: "/#process" },
+  { label: "Process", href: "/process" },
   { label: "Contact", href: "/#cta" },
 ];
 
@@ -33,7 +32,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
               <span className="text-dark text-sm font-bold font-[family-name:var(--font-heading)]">
                 SF
@@ -42,18 +41,18 @@ export default function Navbar() {
             <span className="text-xl font-semibold tracking-tight font-[family-name:var(--font-heading)]">
               Scale<span className="text-gold">Flow</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="text-sm text-gray-text hover:text-white transition-colors duration-300"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -102,14 +101,14 @@ export default function Navbar() {
           >
             <div className="px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-base text-gray-text hover:text-white transition-colors"
+                  className="text-base text-gray-light hover:text-white transition-colors"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <a
                 href="tel:+919873721207"

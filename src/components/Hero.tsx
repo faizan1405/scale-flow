@@ -1,9 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-
-const WHATSAPP_LINK =
-  "https://wa.me/919873721207?text=Hi%20Scale%20Flow!%20I'm%20interested%20in%20your%20services.%20Can%20we%20chat%3F";
+import { WHATSAPP_LINK } from "@/lib/constants";
 
 export default function Hero() {
   return (
@@ -106,13 +105,13 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.0 }}
           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a
+          <Link
             href="#cta"
             className="group relative inline-flex h-14 w-full sm:w-auto items-center justify-center px-8 rounded-full bg-gold text-dark font-semibold text-base overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,169,110,0.3)]"
           >
             <span className="relative z-10">Contact Now</span>
             <div className="absolute inset-0 bg-gold-light opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </a>
+          </Link>
           <a
             href={WHATSAPP_LINK}
             target="_blank"
