@@ -143,8 +143,49 @@ export default function ProjectCard({
 
           {/* Action row */}
           <div className="mt-5 flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 text-xs text-gold/70 group-hover:text-gold transition-colors duration-300 font-medium tracking-wide">
-              View Case Study
+            {project.url ? (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-gold/70 group-hover:text-gold transition-colors duration-300 font-medium tracking-wide"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Visit Live Website
+                <svg
+                  className="w-3 h-3"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                  />
+                </svg>
+              </a>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 text-xs text-gold/70 group-hover:text-gold transition-colors duration-300 font-medium tracking-wide">
+                View Case Study
+                <svg
+                  className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                  />
+                </svg>
+              </span>
+            )}
+            <span className="inline-flex items-center gap-1.5 text-xs text-gray-text group-hover:text-white transition-colors duration-300 font-medium tracking-wide">
+              View Project
               <svg
                 className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5"
                 fill="none"
