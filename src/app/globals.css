@@ -4,8 +4,6 @@
   --color-gold: #C9A96E;
   --color-gold-light: #E8D5A8;
   --color-gold-dark: #A88B4A;
-  --color-cyber: #4A9FD9;
-  --color-cyber-light: #7BBDE8;
   --color-dark: #0A0A0A;
   --color-dark-card: #111111;
   --color-dark-border: #1A1A1A;
@@ -51,21 +49,37 @@ body {
   background: var(--color-gold);
 }
 
-/* Animated path flow for the Process map */
-@keyframes pathFlow {
-  to {
-    stroke-dashoffset: -30;
+/* Subtle grain texture overlay */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  z-index: 1;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-}
-
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 8px rgba(201, 169, 110, 0.3); }
-  50% { box-shadow: 0 0 20px rgba(201, 169, 110, 0.6); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @keyframes fadeInUp {
@@ -73,22 +87,18 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(201, 169, 110, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(201, 169, 110, 0.6); }
+}
+
 @keyframes borderGlow {
   0%, 100% { border-color: rgba(201, 169, 110, 0.1); }
   50% { border-color: rgba(201, 169, 110, 0.3); }
 }
 
-.animate-path-flow {
-  animation: pathFlow 1.5s linear infinite;
-}
-
 .animate-glow-pulse {
   animation: glowPulse 2s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  background-size: 200% 100%;
-  animation: shimmer 3s linear infinite;
 }
 
 .animate-border-glow {

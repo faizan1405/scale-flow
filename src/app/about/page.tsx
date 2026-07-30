@@ -4,48 +4,26 @@ import Footer from "@/components/Footer";
 import AboutContent from "./AboutContent";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About ScaleFlow — Website Design & Development Studio",
   description:
-    "Meet the mind behind Scale Flow. I help brands grow through social media content creation, AI automation, and performance-driven Meta Ads.",
+    "ScaleFlow is a website design and development studio based in Delhi. We help businesses build modern, responsive and professional websites.",
   openGraph: {
-    title: "About — Scale Flow",
+    title: "About — ScaleFlow",
     description:
-      "Meet the mind behind Scale Flow. I help brands grow through social media content creation, AI automation, and performance-driven Meta Ads.",
+      "ScaleFlow is a website design and development studio based in Delhi.",
     url: "/about",
     images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About — Scale Flow",
+    title: "About — ScaleFlow",
     description:
-      "Meet the mind behind Scale Flow. I help brands grow through social media content creation, AI automation, and performance-driven Meta Ads.",
-    images: ["/og-image"],
+      "ScaleFlow is a website design and development studio based in Delhi.",
+    images: ["/og-image.png"],
   },
 };
 
 export default function AboutPage() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Scale Flow",
-    url: "https://scaleflow.in",
-    logo: "https://scaleflow.in/favicon.svg",
-    description:
-      "We build systems that turn attention into revenue. Content. Ads. Automation. Connected into one growth system.",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Delhi",
-      addressCountry: "IN",
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+91-9873721207",
-      contactType: "Customer Service",
-      email: "faizanthings@gmail.com",
-    },
-    sameAs: [],
-  };
-
   return (
     <>
       <Navbar />
@@ -53,10 +31,6 @@ export default function AboutPage() {
         <AboutContent />
       </main>
       <Footer />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
     </>
   );
 }

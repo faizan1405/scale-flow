@@ -1,36 +1,42 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Intro from "@/components/Intro";
-import Pillars from "@/components/Pillars";
-import CaseStudies from "@/components/CaseStudies";
-import Clients from "@/components/Clients";
+import AboutPreview from "@/components/AboutPreview";
+import SelectedWork from "@/components/SelectedWork";
+import Capabilities from "@/components/Capabilities";
 import Process from "@/components/Process";
-import WhyUs from "@/components/WhyUs";
-import CTA from "@/components/CTA";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import FloatingCTA from "@/components/FloatingCTA";
 
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Scale Flow",
-    url: "https://scaleflow.in",
-    logo: "https://scaleflow.in/favicon.svg",
+    "@type": "ProfessionalService",
+    name: "ScaleFlow",
+    url: "https://joinscaleflow.in",
+    logo: "https://joinscaleflow.in/favicon.svg",
     description:
-      "We build systems that turn attention into revenue. Content. Ads. Automation. Connected into one growth system.",
-    image: "https://scaleflow.in/og-image.png",
+      "ScaleFlow designs and develops modern, responsive and high-performing websites for businesses in Delhi.",
+    image: "https://joinscaleflow.in/og-image.png",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Delhi",
+      addressLocality: "New Delhi",
       addressCountry: "IN",
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+91-9873721207",
+      telephone: "+91-8888888888",
       contactType: "Customer Service",
-      email: "faizanthings@gmail.com",
+      email: "info@joinscaleflow.in",
+      availableLanguage: ["English", "Hindi"],
     },
     sameAs: [],
+    priceRange: "$$",
+    areaServed: {
+      "@type": "Country",
+      name: "India",
+    },
+    serviceType: "Website Design and Development",
   };
 
   return (
@@ -38,15 +44,14 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <Intro />
-        <Pillars />
-        <CaseStudies />
-        <Clients />
+        <SelectedWork />
+        <Capabilities />
+        <AboutPreview />
         <Process />
-        <WhyUs />
-        <CTA />
+        <Contact />
       </main>
       <Footer />
+      <FloatingCTA />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

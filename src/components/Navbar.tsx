@@ -3,16 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { WHATSAPP_LINK } from "@/lib/constants";
-
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/#pillars" },
-  { label: "Results", href: "/#case-studies" },
-  { label: "Process", href: "/process" },
-  { label: "Contact", href: "/#cta" },
-];
+import { NAV_LINKS, WHATSAPP_LINK } from "@/lib/constants";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -30,22 +21,26 @@ export default function Navbar() {
       }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-16 sm:h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link
+            href="/"
+            className="flex items-center gap-2"
+            aria-label="ScaleFlow Home"
+          >
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
               <span className="text-dark text-sm font-bold font-[family-name:var(--font-heading)]">
                 SF
               </span>
             </div>
-            <span className="text-xl font-semibold tracking-tight font-[family-name:var(--font-heading)]">
+            <span className="text-lg sm:text-xl font-semibold tracking-tight font-[family-name:var(--font-heading)]">
               Scale<span className="text-gold">Flow</span>
             </span>
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
+          <div className="hidden md:flex items-center gap-8 lg:gap-10">
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -58,10 +53,10 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <a
-            href="tel:+919873721207"
-            className="hidden md:inline-flex h-10 items-center px-6 rounded-full bg-gold text-dark text-sm font-semibold hover:bg-gold-light transition-colors duration-300"
+            href="#contact"
+            className="hidden md:inline-flex h-10 items-center px-5 rounded-full bg-gold text-dark text-sm font-semibold hover:bg-gold-light transition-colors duration-300"
           >
-            Call Now
+            Start Your Website
           </a>
 
           {/* Mobile Toggle */}
@@ -69,6 +64,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden flex flex-col gap-1.5 p-2"
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
             <motion.span
               animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
@@ -97,10 +93,11 @@ export default function Navbar() {
             className="md:hidden border-t border-white/[0.06] overflow-hidden"
             style={{
               background: "rgba(10, 10, 10, 0.95)",
+              backdropFilter: "blur(20px)",
             }}
           >
             <div className="px-6 py-6 flex flex-col gap-4">
-              {navLinks.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
@@ -111,11 +108,11 @@ export default function Navbar() {
                 </Link>
               ))}
               <a
-                href="tel:+919873721207"
+                href="#contact"
                 onClick={() => setMobileOpen(false)}
                 className="mt-2 inline-flex h-12 items-center justify-center rounded-full bg-gold text-dark text-sm font-semibold hover:bg-gold-light transition-colors"
               >
-                Call Now
+                Start Your Website
               </a>
               <a
                 href={WHATSAPP_LINK}
