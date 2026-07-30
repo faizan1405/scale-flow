@@ -25,7 +25,7 @@ export default function AboutPreview() {
   return (
     <section id="about" className="relative py-24 md:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:gap-16 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-12 lg:gap-16 lg:grid-cols-2 lg:items-start">
           {/* Left — Studio statement */}
           <ScrollReveal>
             <span className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-gold font-medium">

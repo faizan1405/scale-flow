@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Project } from "@/data/projects";
 
@@ -9,77 +10,16 @@ interface ProjectCardProps {
   onOpenModal: (project: Project) => void;
 }
 
-function BrowserPreview({ project }: { project: Project }) {
-  const isGreen = project.accentGradient.includes("emerald");
-  const isAmber = project.accentGradient.includes("amber");
-  const isBlue = project.accentGradient.includes("blue");
-  const isViolet = project.accentGradient.includes("violet");
-
-  let dotColor = "bg-gold/40";
-  let layoutClass = "";
-  if (isGreen) dotColor = "bg-emerald-400/50";
-  if (isAmber) dotColor = "bg-amber-400/50";
-  if (isBlue) dotColor = "bg-blue-400/50";
-  if (isViolet) dotColor = "bg-violet-400/50";
-
-  return (
-    <div className="relative w-full aspect-[4/3] bg-[#0c0c0c] overflow-hidden">
-      {/* Browser chrome */}
-      <div className="flex items-center gap-1.5 px-3 py-2 border-b border-white/[0.06] bg-[#131313]">
-        <span className={`h-1.5 w-1.5 rounded-full ${dotColor}`} />
-        <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
-        <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
-        <div className="ml-2 h-3 flex-1 max-w-[60%] rounded-sm bg-white/[0.04]" />
-      </div>
-
-      {/* Stylized website layout */}
-      <div className="p-3 sm:p-4 h-[calc(100%-28px)]">
-        {/* Navigation row */}
-        <div className="flex items-center justify-between mb-3 sm:mb-4">
-          <div className="h-1.5 w-8 sm:w-10 rounded-sm bg-white/30" />
-          <div className="flex gap-1.5 sm:gap-2">
-            <div className="h-1.5 w-4 sm:w-5 rounded-sm bg-white/20" />
-            <div className="h-1.5 w-4 sm:w-5 rounded-sm bg-white/20" />
-            <div className="h-1.5 w-4 sm:w-5 rounded-sm bg-white/20" />
-          </div>
-        </div>
-
-        {/* Hero area */}
-        <div
-          className={`rounded-lg p-3 sm:p-4 bg-gradient-to-br ${project.accentGradient} mb-3 sm:mb-4`}
-        >
-          <div className="h-2.5 sm:h-3 w-3/4 rounded-sm bg-white/80 mb-2" />
-          <div className="h-1.5 w-full rounded-sm bg-white/20 mb-1" />
-          <div className="h-1.5 w-5/6 rounded-sm bg-white/15" />
-          <div className="mt-2.5 sm:mt-3 h-5 sm:h-6 w-16 sm:w-20 rounded-sm bg-white/40" />
-        </div>
-
-        {/* Cards row */}
-        <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
-          {[...Array(3)].map((_, i) => (
-            <div
-              key={i}
-              className="aspect-[3/2] rounded-sm bg-white/[0.06]"
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-6 pt-16">
-        <span className="text-xs text-gold tracking-[0.15em] uppercase font-medium">
-          View Project Details
-        </span>
-      </div>
-    </div>
-  );
-}
-
 export default function ProjectCard({
   project,
   index,
   onOpenModal,
 }: ProjectCardProps) {
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgError, setImgError] = useState(false);
+
+  const imageSrc = `/images/projects/${project.id}.png`;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -91,25 +31,74 @@ export default function ProjectCard({
     >
       <div className="relative rounded-xl border border-white/[0.06] bg-dark-card overflow-hidden transition-all duration-500 hover:border-gold/20 hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)] hover:-translate-y-1">
         {/* Top accent line */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/40 transition-all duration-700" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/40 transition-all duration-700 z-10" />
 
-        {/* Browser preview */}
-        <div className="relative overflow-hidden">
-          <BrowserPreview project={project} />
+        {/* Screenshot */}
+        <div className="relative aspect-[16/10] bg-[#0c0c0c] overflow-hidden">
+          {/* Loading shimmer */}
+          {!imgLoaded && !imgError && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-8 h-8 border-2 border-gold/20 border-t-gold/50 rounded-full animate-spin" />
+            </div>
+          )}
+
+          {/* Browser chrome overlay */}
+          {imgLoaded && !imgError && (
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center gap-1.5 px-3 py-2 bg-gradient-to-b from-black/50 to-transparent">
+              <span className="h-1.5 w-1.5 rounded-full bg-red-400/60" />
+              <span className="h-1.5 w-1.5 rounded-full bg-yellow-400/60" />
+              <span className="h-1.5 w-1.5 rounded-full bg-green-400/60" />
+              <div className="ml-2 h-2.5 flex-1 max-w-[55%] rounded-sm bg-white/10" />
+            </div>
+          )}
+
+          {imgError ? (
+            /* Fallback browser mockup */
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-white/[0.01] flex items-center justify-center">
+              <div className="text-center">
+                <div className="text-3xl mb-2">💻</div>
+                <p className="text-xs text-gray-text">{project.name}</p>
+              </div>
+            </div>
+          ) : (
+            <img
+              src={imageSrc}
+              alt={`${project.name} website screenshot`}
+              loading="lazy"
+              onLoad={() => setImgLoaded(true)}
+              onError={() => setImgError(true)}
+              className={`w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-[1.03] ${
+                imgLoaded ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          )}
+
+          {/* Subtle overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[5]" />
+
+          {/* Live badge */}
+          {project.url && !imgError && imgLoaded && (
+            <div className="absolute top-2.5 right-2.5 z-20">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-500/20 border border-green-500/20 text-[10px] text-green-400 font-medium tracking-wide">
+                <span className="w-1 h-1 rounded-full bg-green-400 animate-pulse" />
+                LIVE
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Content */}
-        <div className="p-5 sm:p-6">
-          <div className="flex items-start justify-between gap-4">
+        <div className="p-4 sm:p-5">
+          <div className="flex items-start justify-between gap-3">
             <div>
-              <h3 className="text-lg sm:text-xl font-semibold tracking-tight font-[family-name:var(--font-heading)] text-white group-hover:text-gold-light transition-colors duration-300">
+              <h3 className="text-base sm:text-lg font-semibold tracking-tight font-[family-name:var(--font-heading)] text-white group-hover:text-gold-light transition-colors duration-300">
                 {project.name}
               </h3>
-              <p className="mt-1 text-xs text-gray-text tracking-wide">
+              <p className="mt-0.5 text-[11px] text-gray-text tracking-wide">
                 {project.industry} · {project.type}
               </p>
             </div>
-            <div className="flex-shrink-0 h-9 w-9 rounded-lg border border-white/[0.06] bg-white/[0.03] flex items-center justify-center text-gray-text group-hover:border-gold/20 group-hover:text-gold transition-all duration-300">
+            <div className="flex-shrink-0 h-8 w-8 rounded-lg border border-white/[0.06] bg-white/[0.03] flex items-center justify-center text-gray-text group-hover:border-gold/20 group-hover:text-gold transition-all duration-300">
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -120,84 +109,36 @@ export default function ProjectCard({
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                  d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
                 />
               </svg>
             </div>
           </div>
 
-          <p className="mt-3 text-sm text-gray-text leading-relaxed">
+          <p className="mt-2 text-[13px] text-gray-text leading-relaxed line-clamp-2">
             {project.description}
           </p>
 
-          <div className="mt-4 flex flex-wrap gap-1.5">
-            {project.capabilities.map((cap) => (
-              <span
-                key={cap}
-                className="px-2.5 py-0.5 rounded-full text-[11px] font-medium border border-white/[0.06] text-gray-light"
-              >
-                {cap}
-              </span>
-            ))}
-          </div>
-
           {/* Action row */}
-          <div className="mt-5 flex items-center gap-3">
-            {project.url ? (
+          <div className="mt-3.5 flex items-center gap-3">
+            {project.url && (
               <a
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-gold/70 group-hover:text-gold transition-colors duration-300 font-medium tracking-wide"
                 onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1.5 text-[11px] text-gold/70 group-hover:text-gold transition-colors duration-300 font-medium tracking-wide"
               >
                 Visit Live Website
-                <svg
-                  className="w-3 h-3"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                  />
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                 </svg>
               </a>
-            ) : (
-              <span className="inline-flex items-center gap-1.5 text-xs text-gold/70 group-hover:text-gold transition-colors duration-300 font-medium tracking-wide">
-                View Case Study
-                <svg
-                  className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
-                  />
-                </svg>
-              </span>
             )}
-            <span className="inline-flex items-center gap-1.5 text-xs text-gray-text group-hover:text-white transition-colors duration-300 font-medium tracking-wide">
+            <span className="inline-flex items-center gap-1.5 text-[11px] text-gray-text group-hover:text-white transition-colors duration-300 font-medium tracking-wide">
               View Project
-              <svg
-                className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
-                />
+              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
               </svg>
             </span>
           </div>

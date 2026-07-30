@@ -32,7 +32,7 @@ const steps = [
 export default function Process() {
   return (
     <section id="process" className="relative py-24 md:py-32 overflow-hidden">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
           <motion.span

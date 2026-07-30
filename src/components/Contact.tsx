@@ -489,7 +489,7 @@ export default function Contact() {
 
                     <button
                       type="submit"
-                      className="group relative w-full h-13 rounded-xl bg-gold text-dark font-semibold text-base overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,169,110,0.25)]"
+                      className="group relative w-full h-12 rounded-xl bg-gold text-dark font-semibold text-base overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,169,110,0.25)]"
                     >
                       <span className="relative z-10">
                         Send Website Enquiry

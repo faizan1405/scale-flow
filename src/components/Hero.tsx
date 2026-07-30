@@ -156,14 +156,14 @@ export default function Hero() {
             >
               <Link
                 href="#work"
-                className="group relative inline-flex h-13 w-full sm:w-auto items-center justify-center px-7 rounded-full bg-gold text-dark font-semibold text-base overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,169,110,0.3)]"
+                className="group relative inline-flex h-12 w-full sm:w-auto items-center justify-center px-7 rounded-full bg-gold text-dark font-semibold text-base overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,169,110,0.3)]"
               >
                 <span className="relative z-10">View Our Work</span>
                 <div className="absolute inset-0 bg-gold-light opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Link>
               <Link
                 href="#contact"
-                className="inline-flex h-13 w-full sm:w-auto items-center justify-center px-7 rounded-full border border-white/15 text-white text-base font-medium hover:border-gold/40 hover:bg-gold/[0.04] transition-all duration-300"
+                className="inline-flex h-12 w-full sm:w-auto items-center justify-center px-7 rounded-full border border-white/15 text-white text-base font-medium hover:border-gold/40 hover:bg-gold/[0.04] transition-all duration-300"
               >
                 Start Your Website
               </Link>

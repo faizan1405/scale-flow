@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { NAV_LINKS, WHATSAPP_LINK } from "@/lib/constants";
+import { NAV_LINKS, WHATSAPP_LINK, PHONE_NUMBER, PHONE_DISPLAY, EMAIL } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -53,18 +53,18 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li>
                   <a
-                    href="tel:+918888888888"
+                    href={`tel:${PHONE_NUMBER}`}
                     className="text-sm text-gray-light hover:text-gold transition-colors duration-300"
                   >
-                    +91 88888 88888
+                    {PHONE_DISPLAY}
                   </a>
                 </li>
                 <li>
                   <a
-                    href="mailto:info@joinscaleflow.in"
+                    href={`mailto:${EMAIL}`}
                     className="text-sm text-gray-light hover:text-gold transition-colors duration-300"
                   >
-                    info@joinscaleflow.in
+                    {EMAIL}
                   </a>
                 </li>
                 <li>

@@ -6,7 +6,7 @@ export default function Analytics() {
     <>
       <script
         defer
-        data-domain="scaleflow.in"
+        data-domain="joinscaleflow.in"
         src="https://plausible.io/js/script.js"
       />
     </>

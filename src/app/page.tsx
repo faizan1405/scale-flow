@@ -6,7 +6,6 @@ import Capabilities from "@/components/Capabilities";
 import Process from "@/components/Process";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import FloatingCTA from "@/components/FloatingCTA";
 
 export default function Home() {
   const jsonLd = {
@@ -25,9 +24,9 @@ export default function Home() {
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+91-8888888888",
+      telephone: "+91 9873721207",
       contactType: "Customer Service",
-      email: "info@joinscaleflow.in",
+      email: "faizanthings@gmail.com",
       availableLanguage: ["English", "Hindi"],
     },
     sameAs: [],
@@ -51,7 +50,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <FloatingCTA />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
