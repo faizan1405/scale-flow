@@ -21,7 +21,7 @@ export default function Navbar() {
       }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 sm:h-20 items-center justify-between">
+        <div className="flex h-16 sm:h-20 items-center justify-between relative">
           {/* Logo */}
           <Link
             href="/"
@@ -38,8 +38,8 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-8 lg:gap-10">
+          {/* Desktop Links - Centered */}
+          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 lg:gap-10">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
