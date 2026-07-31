@@ -1,18 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { WHATSAPP_LINK } from "@/lib/constants";
 
 export default function FloatingCTA() {
+  const y = useMotionValue(0);
+  const rotate = useTransform(y, [-10, 0, 10], [-5, 0, 5]);
+
   return (
     <motion.a
       href={WHATSAPP_LINK}
       target="_blank"
       rel="noopener noreferrer"
       initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 1.5, type: "spring", stiffness: 260, damping: 20 }}
-      whileHover={{ scale: 1.08 }}
+      animate={{
+        scale: 1,
+        opacity: 1,
+        y: [0, -8, 0],
+      }}
+      transition={{
+        scale: { delay: 1.5, type: "spring", stiffness: 260, damping: 20 },
+        opacity: { delay: 1.5, duration: 0.3 },
+        y: { delay: 2, duration: 3, repeat: Infinity, ease: "easeInOut" },
+      }}
+      whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       className="fixed bottom-5 right-5 z-40 h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-green-500 text-white shadow-lg flex items-center justify-center"
       style={{ boxShadow: "0 4px 24px rgba(34,197,94,0.35)" }}

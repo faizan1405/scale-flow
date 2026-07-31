@@ -4,6 +4,7 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import Analytics from "@/components/Analytics";
 import FloatingCTA from "@/components/FloatingCTA";
 import SkipLink from "@/components/SkipLink";
+import StructuredData from "@/components/StructuredData";
 import "./globals.css";
 
 const inter = Inter({
@@ -94,6 +95,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="antialiased">
         <SkipLink />
+        <StructuredData />
         <ErrorBoundary>
           {children}
         </ErrorBoundary>
