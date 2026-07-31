@@ -84,22 +84,43 @@ export default function ProcessLine() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.7, delay: i * 0.15 }}
-                className={`relative flex items-start gap-8 md:gap-0 ${
+                className={`relative flex items-center gap-8 md:gap-0 ${
                   i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
-                {/* Content */}
+                {/* Content card */}
                 <div
-                  className={`flex-1 ${
-                    i % 2 === 0 ? "md:text-right md:pr-12" : "md:text-left md:pl-12"
-                  } pl-12 md:pl-0`}
+                  className={`flex-1 ${i % 2 === 0 ? "md:pr-12" : "md:pl-12"} pl-12 md:pl-0`}
                 >
-                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight font-[family-name:var(--font-heading)] text-white">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-gray-text text-base leading-relaxed max-w-md md:ml-auto md:mr-0">
-                    {step.description}
-                  </p>
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className={`relative rounded-2xl p-6 overflow-hidden ${
+                      i % 2 === 0 ? "md:text-right" : "md:text-left"
+                    }`}
+                    style={{
+                      background: "rgba(17,17,17,0.4)",
+                      backdropFilter: "blur(16px) saturate(1.2)",
+                      WebkitBackdropFilter: "blur(16px) saturate(1.2)",
+                      border: "1px solid rgba(255,255,255,0.06)",
+                      boxShadow: "0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.03)",
+                    }}
+                  >
+                    <div aria-hidden="true" className={`absolute top-0 left-0 right-0 h-px ${i % 2 === 0 ? "md:bg-gradient-to-l" : "bg-gradient-to-r"} from-transparent via-gold/30 to-transparent`} />
+                    <div className={`flex items-start gap-3 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                      <span className="flex-shrink-0 h-8 w-8 rounded-lg bg-gold/10 border border-gold/20 flex items-center justify-center text-xs font-bold text-gold font-[family-name:var(--font-heading)]">
+                        {step.number}
+                      </span>
+                      <div className={i % 2 === 0 ? "md:text-right" : ""}>
+                        <h3 className="text-xl sm:text-2xl font-bold tracking-tight font-[family-name:var(--font-heading)] text-white">
+                          {step.title}
+                        </h3>
+                        <p className="mt-2 text-gray-text text-base leading-relaxed">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
 
                 {/* Center dot with hover glow */}

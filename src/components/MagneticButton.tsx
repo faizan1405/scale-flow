@@ -48,7 +48,7 @@ export default function MagneticButton({
     primary:
       "bg-gold text-dark hover:bg-gold/90 shadow-[0_0_40px_-12px_rgba(201,169,110,0.4)]",
     secondary:
-      "border border-white/[0.1] bg-white/[0.03] text-white hover:border-gold/30 hover:bg-white/[0.05] backdrop-blur-sm",
+      "border border-white/[0.1] bg-white/[0.04] text-white hover:border-gold/30 hover:bg-white/[0.08] backdrop-blur-md",
     ghost:
       "text-white hover:text-gold",
   };

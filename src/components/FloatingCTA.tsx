@@ -25,8 +25,15 @@ export default function FloatingCTA() {
       }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed bottom-5 right-5 z-40 h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-green-500 text-white shadow-lg flex items-center justify-center"
-      style={{ boxShadow: "0 4px 24px rgba(34,197,94,0.35)" }}
+      className="fixed bottom-5 right-5 z-40 h-14 w-14 sm:h-16 sm:w-16 rounded-full flex items-center justify-center cursor-pointer"
+      style={{
+        background: "rgba(37, 211, 102, 0.15)",
+        backdropFilter: "blur(16px) saturate(1.4)",
+        WebkitBackdropFilter: "blur(16px) saturate(1.4)",
+        border: "1px solid rgba(37, 211, 102, 0.25)",
+        boxShadow: "0 4px 24px rgba(34,197,94,0.3)",
+        color: "#25D366",
+      }}
       aria-label="Chat on WhatsApp"
     >
       <svg

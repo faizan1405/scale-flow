@@ -92,7 +92,14 @@ export default function AboutContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group relative p-6 sm:p-7 rounded-2xl border border-white/[0.06] bg-dark-card transition-all duration-500 hover:border-gold/15"
+              className="group relative p-6 sm:p-7 rounded-2xl transition-all duration-500 hover:border-gold/20"
+              style={{
+                background: "rgba(17,17,17,0.4)",
+                backdropFilter: "blur(16px) saturate(1.2)",
+                WebkitBackdropFilter: "blur(16px) saturate(1.2)",
+                border: "1px solid rgba(255,255,255,0.06)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.03)",
+              }}
             >
               <div className="flex items-start gap-4">
                 <span className="flex-shrink-0 h-10 w-10 rounded-xl bg-gold/[0.08] border border-gold/10 flex items-center justify-center text-sm font-bold text-gold font-[family-name:var(--font-heading)]">

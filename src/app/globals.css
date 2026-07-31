@@ -27,6 +27,41 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(17, 17, 17, 0.55);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.glass-strong {
+  background: rgba(17, 17, 17, 0.7);
+  backdrop-filter: blur(32px) saturate(1.4);
+  -webkit-backdrop-filter: blur(32px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.glass-subtle {
+  background: rgba(17, 17, 17, 0.35);
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.glass-gold {
+  background: rgba(201, 169, 110, 0.06);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid rgba(201, 169, 110, 0.1);
+}
+.glass-hover {
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.glass-hover:hover {
+  background: rgba(17, 17, 17, 0.65);
+  border-color: rgba(201, 169, 110, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(201, 169, 110, 0.05);
+}
+
+/* Selection */
 ::selection {
   background: var(--color-gold);
   color: #0A0A0A;

@@ -3,12 +3,10 @@ export const capabilities = [
     category: "Strategy",
     items: [
       "Website strategy and structure",
-      "Content planning and mapping",
-      "User experience design",
     ],
   },
   {
-    category: "Design & Development",
+    category: "Design",
     items: [
       "Custom UI/UX design",
       "Responsive development",
@@ -29,7 +27,7 @@ export const capabilities = [
     category: "Performance & Launch",
     items: [
       "Speed and performance optimization",
-      "Domain and hosting assistance",
+      "Domain and launch assistance",
       "Testing and quality assurance",
     ],
   },

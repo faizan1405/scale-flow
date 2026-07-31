@@ -49,13 +49,16 @@ export default function Navbar() {
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-white/[0.08] bg-dark/80 backdrop-blur-xl"
+          ? "border-b border-white/[0.08]"
           : "border-b border-transparent"
       }`}
       style={{
-        background: scrolled ? "rgba(10, 10, 10, 0.8)" : "transparent",
-        backdropFilter: scrolled ? "blur(24px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(24px)" : "none",
+        background: scrolled
+          ? "linear-gradient(180deg, rgba(10,10,10,0.65) 0%, rgba(10,10,10,0.45) 100%)"
+          : "transparent",
+        backdropFilter: scrolled ? "blur(28px) saturate(1.5)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(28px) saturate(1.5)" : "none",
+        boxShadow: scrolled ? "0 8px 32px rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.04) inset" : "none",
       }}
     >
       {/* Animated bottom border line */}
@@ -168,10 +171,12 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="md:hidden border-t border-white/[0.06] overflow-hidden"
+            className="md:hidden border-t border-white/[0.08] overflow-hidden"
             style={{
-              background: "rgba(10, 10, 10, 0.95)",
-              backdropFilter: "blur(20px)",
+              background: "linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.7) 100%)",
+              backdropFilter: "blur(32px) saturate(1.4)",
+              WebkitBackdropFilter: "blur(32px) saturate(1.4)",
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)",
             }}
           >
             <div className="px-6 py-6 flex flex-col gap-4">
