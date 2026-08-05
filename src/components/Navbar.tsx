@@ -91,7 +91,7 @@ export default function Navbar() {
             aria-label="ScaleFlow Home"
           >
             <motion.div
-              className="relative h-10 w-10 sm:h-12 sm:w-12"
+              className="relative h-14 w-14 sm:h-16 sm:w-16"
               whileHover={{ scale: 1.08, rotate: -5 }}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
             >
