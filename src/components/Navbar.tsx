@@ -15,18 +15,16 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const ticking = useRef(false);
-  const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname === "/work") {
-      setActiveSection("work");
-    }
+    setActiveSection(pathname === "/work" ? "work" : "");
+  }, [pathname]);
 
+  useEffect(() => {
     const onScroll = () => {
       if (!ticking.current) {
         requestAnimationFrame(() => {
           setScrolled(window.scrollY > 50);
-
           if (pathname !== "/work") {
             let current = "";
             for (const id of SECTIONS) {
@@ -49,7 +47,7 @@ export default function Navbar() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   return (
     <motion.nav
@@ -116,11 +114,10 @@ export default function Navbar() {
               const isActive = isHash
                 ? activeSection === sectionId
                 : pathname === link.href;
-              const isWork = !isHash && link.href === "/work";
               return (
                 <Link
                   key={link.label}
-                  href={link.href}
+                  href={isHash && pathname !== "/" ? `/${link.href}` : link.href}
                   className="relative text-sm transition-colors duration-300"
                 >
                   <span
@@ -145,7 +142,7 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <motion.a
-            href="#contact"
+            href={pathname !== "/" ? "/#contact" : "#contact"}
             className="hidden md:inline-flex h-10 items-center px-5 rounded-full bg-gold text-dark text-sm font-semibold"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
