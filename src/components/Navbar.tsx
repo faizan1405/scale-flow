@@ -15,6 +15,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const ticking = useRef(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     setActiveSection(pathname === "/work" ? "work" : "");
