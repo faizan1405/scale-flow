@@ -168,7 +168,9 @@ body {
 .floating-field input:focus ~ label,
 .floating-field input:not(:placeholder-shown) ~ label,
 .floating-field textarea:focus ~ label,
-.floating-field textarea:not(:placeholder-shown) ~ label {
+.floating-field textarea:not(:placeholder-shown) ~ label,
+.floating-field select:focus ~ label,
+.floating-field select.has-value ~ label {
   top: 0;
   transform: translateY(-50%);
   font-size: 0.65rem;

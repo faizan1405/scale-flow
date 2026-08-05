@@ -2,35 +2,44 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS, WHATSAPP_LINK } from "@/lib/constants";
 
-const SECTIONS = NAV_LINKS.map((l) => l.href.replace("#", ""));
+const SECTIONS = NAV_LINKS
+  .filter((l) => l.href.startsWith("#"))
+  .map((l) => l.href.replace("#", ""));
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const ticking = useRef(false);
+  const pathname = usePathname();
 
   useEffect(() => {
+    if (pathname === "/work") {
+      setActiveSection("work");
+    }
+
     const onScroll = () => {
       if (!ticking.current) {
         requestAnimationFrame(() => {
           setScrolled(window.scrollY > 50);
 
-          // Detect active section
-          let current = "";
-          for (const id of SECTIONS) {
-            const el = document.getElementById(id);
-            if (el) {
-              const rect = el.getBoundingClientRect();
-              if (rect.top <= 150) {
-                current = id;
+          if (pathname !== "/work") {
+            let current = "";
+            for (const id of SECTIONS) {
+              const el = document.getElementById(id);
+              if (el) {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= 150) {
+                  current = id;
+                }
               }
             }
+            setActiveSection(current);
           }
-          setActiveSection(current);
           ticking.current = false;
         });
         ticking.current = true;
@@ -102,7 +111,12 @@ export default function Navbar() {
           {/* Desktop Links - Centered */}
           <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 lg:gap-10">
             {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.href.replace("#", "");
+              const isHash = link.href.startsWith("#");
+              const sectionId = isHash ? link.href.replace("#", "") : "";
+              const isActive = isHash
+                ? activeSection === sectionId
+                : pathname === link.href;
+              const isWork = !isHash && link.href === "/work";
               return (
                 <Link
                   key={link.label}
@@ -180,22 +194,29 @@ export default function Navbar() {
             }}
           >
             <div className="px-6 py-6 flex flex-col gap-4">
-              {NAV_LINKS.map((link, i) => (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="text-base text-gray-light hover:text-white transition-colors block py-1"
+              {NAV_LINKS.map((link, i) => {
+                const isHash = link.href.startsWith("#");
+                const mobileHref =
+                  isHash && pathname === "/work"
+                    ? `/${link.href}`
+                    : link.href;
+                return (
+                  <motion.div
+                    key={link.label}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
                   >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={mobileHref}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-base text-gray-light hover:text-white transition-colors block py-1"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

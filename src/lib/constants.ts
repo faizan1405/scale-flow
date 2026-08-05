@@ -14,7 +14,7 @@ export const LOCATION = "Delhi, India";
 export const SITE_URL = "https://joinscaleflow.in";
 
 export const NAV_LINKS = [
-  { label: "Work", href: "#work" },
+  { label: "Work", href: "/work" },
   { label: "Capabilities", href: "#capabilities" },
   { label: "About", href: "#about" },
   { label: "Process", href: "#process" },

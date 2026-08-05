@@ -4,7 +4,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 import Navbar from "@/components/Navbar";
 import FloatingCTA from "@/components/FloatingCTA";
 import LayeredBrowserMockup from "@/components/LayeredBrowserMockup";
-import SelectedWork from "@/components/SelectedWork";
 import Capabilities from "@/components/Capabilities";
 import ProcessLine from "@/components/ProcessLine";
 import MagneticButton from "@/components/MagneticButton";
@@ -32,7 +31,7 @@ function FloatingSelect({
 }) {
   return (
     <div className="floating-field">
-      <select id={name} name={name} required={required} className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-4 py-3 text-sm text-white focus:outline-none focus:border-gold/40 focus:ring-1 focus:ring-gold/20 transition-colors appearance-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23888'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center", backgroundSize: "20px" }}>
+      <select id={name} name={name} required={required} onChange={(e) => { e.currentTarget.classList.toggle("has-value", e.currentTarget.value !== ""); }} className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-4 py-3 pr-10 text-sm text-white focus:outline-none focus:border-gold/40 focus:ring-1 focus:ring-gold/20 transition-colors appearance-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23888'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center", backgroundSize: "20px" }}>
         <option value="" disabled></option>
         {options.map((opt) => <option key={opt} value={opt} className="bg-dark-card">{opt}</option>)}
       </select>
@@ -95,7 +94,7 @@ export default function Home() {
                 </motion.h1>
                 <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="mt-6 text-base sm:text-lg text-gray-text leading-relaxed">Custom, fast and mobile-first websites designed to build trust, showcase your business and turn visitors into genuine enquiries.</motion.p>
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="mt-8 flex flex-wrap gap-4">
-                  <MagneticButton variant="primary" href="#work" ariaLabel="View our website projects">View Our Work<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></MagneticButton>
+                  <MagneticButton variant="primary" href="/work" ariaLabel="View our website projects">View Our Work<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></MagneticButton>
                   <MagneticButton variant="secondary" href="#contact" ariaLabel="Start your website project">Start Your Website</MagneticButton>
                 </motion.div>
                 <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }} className="mt-8 text-xs text-gray-text/60 tracking-wide">Custom Design · Responsive Development · Performance Focused</motion.p>
@@ -105,7 +104,6 @@ export default function Home() {
           </div>
         </section>
 
-        <SelectedWork />
         <Capabilities />
 
         {/* About */}
@@ -229,7 +227,7 @@ export default function Home() {
             <div>
               <h4 className="text-sm font-semibold text-white mb-4">Navigate</h4>
               <ul className="space-y-2.5">
-                <li><a href="#work" className="text-sm text-gray-text hover:text-gold transition-colors">Work</a></li>
+                <li><a href="/work" className="text-sm text-gray-text hover:text-gold transition-colors">Work</a></li>
                 <li><a href="#capabilities" className="text-sm text-gray-text hover:text-gold transition-colors">Capabilities</a></li>
                 <li><a href="#about" className="text-sm text-gray-text hover:text-gold transition-colors">About</a></li>
                 <li><a href="#process" className="text-sm text-gray-text hover:text-gold transition-colors">Process</a></li>
