@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   WHATSAPP_LINK,
   WHATSAPP_NUMBER,
@@ -12,7 +12,6 @@ import {
 import { projectTypes, budgetRanges } from "@/data/projects";
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
@@ -24,7 +23,7 @@ export default function Contact() {
     budget: "",
   });
 
-  async function handleSubmit(e: FormEvent) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
 
@@ -35,51 +34,33 @@ export default function Contact() {
       (b) => b === form.budget,
     ) || form.budget;
 
-    const text = [
-      `Hi ScaleFlow, I'm interested in building or redesigning a website for my business.`,
+    const message = [
+      "👋 Hello ScaleFlow Team,",
       "",
-      `Name: ${form.name}`,
-      `Business: ${form.business}`,
-      `Website Type: ${typeLabel}`,
-      budgetLabel ? `Budget: ${budgetLabel}` : "",
-      `Message: ${form.message || "Not provided"}`,
+      "I would like to enquire about building a website.",
       "",
-      `Email: ${form.email}`,
-      `Phone: ${form.phone}`,
+      "📌 Contact Details",
+      `• Full Name: ${form.name}`,
+      `• Phone Number: ${form.phone}`,
+      `• Email Address: ${form.email}`,
+      `• Business / Brand Name: ${form.business}`,
+      "",
+      "🌐 Project Details",
+      `• Website Type: ${typeLabel}`,
+      `• Project Description: ${form.message || "Not provided"}`,
+      budgetLabel ? `• Budget Range: ${budgetLabel}` : "• Budget Range: Not specified",
+      "",
+      "Looking forward to discussing my project. Please get in touch with me.",
+      "",
+      "Thank you!",
     ]
       .filter(Boolean)
       .join("\n");
 
-    const encoded = encodeURIComponent(text);
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+    const encoded = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/919873721207?text=${encoded}`;
 
-    try {
-      const newWindow = window.open(whatsappUrl, "_blank");
-
-      if (!newWindow) {
-        setError(
-          "Your browser blocked the popup. Please allow popups for this site, or click the WhatsApp button below.",
-        );
-        return;
-      }
-
-      await new Promise((resolve) => setTimeout(resolve, 100));
-
-      if (newWindow.closed) {
-        setError(
-          "The WhatsApp window was blocked. Please allow popups and try again, or use the button below.",
-        );
-        return;
-      }
-
-      setSubmitted(true);
-    } catch {
-      setError(
-        "Something went wrong opening WhatsApp. Please try again or reach us at " +
-          EMAIL +
-          ".",
-      );
-    }
+    window.location.href = whatsappUrl;
   }
 
   const inputClasses =
@@ -228,97 +209,45 @@ export default function Contact() {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <div className="rounded-2xl border border-white/[0.08] bg-dark-card p-6 sm:p-8">
-              <AnimatePresence mode="wait">
-                {submitted ? (
-                  <motion.div
-                    key="success"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-10"
-                  >
-                    <div className="mx-auto h-14 w-14 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center mb-5">
-                      <svg
-                        className="w-7 h-7 text-gold"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={1.5}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M4.5 12.75l6 6 9-13.5"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-semibold font-[family-name:var(--font-heading)]">
-                      Enquiry sent!
-                    </h3>
-                    <p className="mt-3 text-gray-text text-sm">
-                      Complete the conversation on WhatsApp to reach ScaleFlow
-                      directly.
-                    </p>
-                    <button
-                      onClick={() => {
-                        setSubmitted(false);
-                        setError(null);
-                        setForm({
-                          name: "",
-                          phone: "",
-                          email: "",
-                          business: "",
-                          websiteType: "",
-                          message: "",
-                          budget: "",
-                        });
-                      }}
-                      className="mt-5 text-sm text-gold hover:text-gold-light transition-colors"
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-10 mb-6 rounded-xl bg-red-500/5 border border-red-500/10"
+                >
+                  <div className="mx-auto h-14 w-14 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-5">
+                    <svg
+                      className="w-7 h-7 text-red-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
                     >
-                      Send another enquiry
-                    </button>
-                  </motion.div>
-                ) : error ? (
-                  <motion.div
-                    key="error"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-10"
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold font-[family-name:var(--font-heading)]">
+                    Couldn&apos;t open WhatsApp
+                  </h3>
+                  <p className="mt-3 text-gray-text text-sm">{error}</p>
+                  <button
+                    onClick={() => setError(null)}
+                    className="mt-5 text-sm text-gold hover:text-gold-light transition-colors"
                   >
-                    <div className="mx-auto h-14 w-14 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center mb-5">
-                      <svg
-                        className="w-7 h-7 text-red-400"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={1.5}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-semibold font-[family-name:var(--font-heading)]">
-                      Couldn&apos;t open WhatsApp
-                    </h3>
-                    <p className="mt-3 text-gray-text text-sm">{error}</p>
-                    <button
-                      onClick={() => setError(null)}
-                      className="mt-5 text-sm text-gold hover:text-gold-light transition-colors"
-                    >
-                      Try again
-                    </button>
-                  </motion.div>
-                ) : (
-                  <motion.form
-                    key="form"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onSubmit={handleSubmit}
-                    className="space-y-4"
-                  >
+                    Try again
+                  </button>
+                </motion.div>
+              )}
+              <motion.form
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                onSubmit={handleSubmit}
+                className="space-y-4"
+              >
                     <div>
                       <label
                         htmlFor="name"
@@ -501,8 +430,9 @@ export default function Contact() {
                       This will open WhatsApp with your details pre-filled.
                     </p>
                   </motion.form>
-                )}
-              </AnimatePresence>
+                  <p className="text-center text-[11px] text-gray-text/40">
+                      This will open WhatsApp with your details pre-filled.
+                    </p>
             </div>
           </motion.div>
         </div>

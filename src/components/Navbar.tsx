@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS, WHATSAPP_LINK } from "@/lib/constants";
@@ -86,25 +87,23 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2 sm:gap-3 group"
             aria-label="ScaleFlow Home"
           >
             <motion.div
-              className="h-8 w-8 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center"
-              whileHover={{ scale: 1.1, rotate: -5 }}
+              className="relative h-10 w-10 sm:h-12 sm:w-12"
+              whileHover={{ scale: 1.08, rotate: -5 }}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
             >
-              <span className="text-dark text-sm font-bold font-[family-name:var(--font-heading)]">
-                SF
-              </span>
+              <Image
+                src="/logo.svg"
+                alt="ScaleFlow Logo"
+                fill
+                priority
+                sizes="48px"
+                className="object-contain"
+              />
             </motion.div>
-            <motion.span
-              className="text-lg sm:text-xl font-semibold tracking-tight font-[family-name:var(--font-heading)]"
-              whileHover={{ letterSpacing: "0.02em" }}
-              transition={{ duration: 0.3 }}
-            >
-              Scale<span className="text-gold">Flow</span>
-            </motion.span>
           </Link>
 
           {/* Desktop Links - Centered */}
