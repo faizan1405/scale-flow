@@ -4,7 +4,6 @@ import ScrollReveal from "@/components/ScrollReveal";
 import Navbar from "@/components/Navbar";
 import FloatingCTA from "@/components/FloatingCTA";
 import LayeredBrowserMockup from "@/components/LayeredBrowserMockup";
-import Capabilities from "@/components/Capabilities";
 import ProcessLine from "@/components/ProcessLine";
 import MagneticButton from "@/components/MagneticButton";
 import AnimatedStats from "@/components/AnimatedStats";
@@ -31,7 +30,7 @@ function FloatingSelect({
 }) {
   return (
     <div className="floating-field">
-      <select id={name} name={name} required={required} onChange={(e) => { e.currentTarget.classList.toggle("has-value", e.currentTarget.value !== ""); }} className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-4 py-3 pr-10 text-sm text-white focus:outline-none focus:border-gold/40 focus:ring-1 focus:ring-gold/20 transition-colors appearance-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23888'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center", backgroundSize: "20px" }}>
+      <select id={name} name={name} required={required} onChange={(e) => e.currentTarget.classList.toggle("has-value", e.currentTarget.value !== "")} className="w-full rounded-lg border border-white/[0.08] bg-white/[0.02] px-4 py-3 pr-10 text-sm text-white focus:outline-none focus:border-gold/40 focus:ring-1 focus:ring-gold/20 transition-colors appearance-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23888'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E")`, backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center", backgroundSize: "20px" }}>
         <option value="" disabled></option>
         {options.map((opt) => <option key={opt} value={opt} className="bg-dark-card">{opt}</option>)}
       </select>
@@ -103,8 +102,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <Capabilities />
 
         {/* About */}
         <section id="about" className="relative py-24 md:py-32 overflow-hidden">
@@ -228,7 +225,6 @@ export default function Home() {
               <h4 className="text-sm font-semibold text-white mb-4">Navigate</h4>
               <ul className="space-y-2.5">
                 <li><a href="/work" className="text-sm text-gray-text hover:text-gold transition-colors">Work</a></li>
-                <li><a href="#capabilities" className="text-sm text-gray-text hover:text-gold transition-colors">Capabilities</a></li>
                 <li><a href="#about" className="text-sm text-gray-text hover:text-gold transition-colors">About</a></li>
                 <li><a href="#process" className="text-sm text-gray-text hover:text-gold transition-colors">Process</a></li>
                 <li><a href="#contact" className="text-sm text-gray-text hover:text-gold transition-colors">Contact</a></li>
